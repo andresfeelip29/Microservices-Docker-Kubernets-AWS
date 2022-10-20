@@ -1,4 +1,4 @@
-package com.co.app.course.msvcdockerkubernetes.courses.msvccourses;
+package com.co.app.course.msvcdockerkubernetes.courses;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,20 +1,8 @@
 
-°
-qmsvc-users/src/main/java/com/co/app/course/msvcdockerkubernetes/users/Repositories/Contracts/IUserRepository.java,1\b\1b29b27b32fe96b2f770c9f4bc52be0f49148069
-ö
-jmsvc-users/src/main/java/com/co/app/course/msvcdockerkubernetes/users/Services/Contracts/IUserService.java,e\9\e95aad15cceb0944d07125e291237698589e1dff
-ì
-cmsvc-users/src/main/java/com/co/app/course/msvcdockerkubernetes/users/Services/UserServiceImpl.java,f\f\ff7ceabd830b18554c644dfbb2cd098e3b563710
 è
 _msvc-users/src/main/java/com/co/app/course/msvcdockerkubernetes/users/MsvcUsersApplication.java,1\e\1eb38bd4d2e6bad0561599993dfdf9e0e9d7beaa
-ï
-emsvc-users/src/main/java/com/co/app/course/msvcdockerkubernetes/users/Controllers/UserController.java,d\7\d7975887c2886ecffdeddf54b357e2cdcbdc8c17
-¢
-rmsvc-users/src/main/java/com/co/app/course/msvcdockerkubernetes/users/Repositories/Models/Entities/UserEntity.java,7\7\775faff5cac1cd0455eeb1c2e35d34c4ff906661
 D
 msvc-courses/HELP.md,3\9\3902fdc4eac74d584b017b54f60870e4ec4b97b0
-°
-qmsvc-courses/src/main/java/com/co/app/course/msvcdockerkubernetes/courses/msvccourses/MsvcCoursesApplication.java,8\4\84272ba2f3e68a718d6bf83805b39fa4ce21442a
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 7
