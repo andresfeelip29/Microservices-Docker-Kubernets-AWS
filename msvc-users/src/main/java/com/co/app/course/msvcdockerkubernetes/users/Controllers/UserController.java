@@ -2,7 +2,6 @@ package com.co.app.course.msvcdockerkubernetes.users.Controllers;
 
 import com.co.app.course.msvcdockerkubernetes.users.Repositories.Models.Entities.UserEntity;
 import com.co.app.course.msvcdockerkubernetes.users.Services.Contracts.IUserService;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -15,6 +15,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>msvc-users</module>
+        <module>msvc-courses</module>
     </modules>
     <properties>
         <maven.compiler.source>18</maven.compiler.source>
