@@ -11,3 +11,19 @@ B
 msvc-users/pom.xml,2\c\2c59da4100b83db7056a7faba346782807ba3f71
 D
 msvc-courses/pom.xml,4\9\4973bda155ac8601cb47bd306ab0b254f478d50d
+¢
+rmsvc-users/src/main/java/com/co/app/course/msvcdockerkubernetes/users/Repositories/Models/Entities/UserEntity.java,7\7\775faff5cac1cd0455eeb1c2e35d34c4ff906661
+¡
+qmsvc-users/src/main/java/com/co/app/course/msvcdockerkubernetes/users/Repositories/Contracts/IUserRepository.java,1\b\1b29b27b32fe96b2f770c9f4bc52be0f49148069
+§
+wmsvc-courses/src/main/java/com/co/app/course/msvcdockerkubernetes/courses/Repositories/Contracts/ICourseRepository.java,e\d\ed820845dd244d477097d11795b4b21f0802ceae
+¨
+xmsvc-courses/src/main/java/com/co/app/course/msvcdockerkubernetes/courses/Repositories/Models/Entities/CourseEntity.java,3\f\3f239093e04ae43996e5bd2e1553ed0538c99cc1
+š
+jmsvc-users/src/main/java/com/co/app/course/msvcdockerkubernetes/users/Services/Contracts/IUserService.java,e\9\e95aad15cceb0944d07125e291237698589e1dff
+“
+cmsvc-users/src/main/java/com/co/app/course/msvcdockerkubernetes/users/Services/UserServiceImpl.java,f\f\ff7ceabd830b18554c644dfbb2cd098e3b563710
+ 
+pmsvc-courses/src/main/java/com/co/app/course/msvcdockerkubernetes/courses/Services/Contracts/ICourseService.java,4\c\4c170575cf8cc03647df2d57eca2716153e2786f
+™
+imsvc-courses/src/main/java/com/co/app/course/msvcdockerkubernetes/courses/Services/CourseServiceImpl.java,b\5\b5f15940addcd660d8fa31122e5de5b6761c9c22
