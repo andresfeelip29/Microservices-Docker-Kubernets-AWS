@@ -5,9 +5,13 @@ import com.co.app.course.msvcdockerkubernetes.courses.Services.Contracts.ICourse
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -28,12 +32,19 @@ public class CourseController {
     }
 
     @PostMapping
-    public ResponseEntity<?> addCourse(@RequestBody CourseEntity course) {
+    public ResponseEntity<?> addCourse(@Valid @RequestBody CourseEntity course, BindingResult result) {
+        if(result.hasErrors()){
+            return validate(result);
+        }
+
         return ResponseEntity.status(HttpStatus.CREATED).body(courseService.save(course));
     }
 
     @PutMapping(name = "/{id}")
-    public ResponseEntity<?> updateCourse(@RequestBody CourseEntity user, @PathVariable Long id) {
+    public ResponseEntity<?> updateCourse(@Valid @RequestBody CourseEntity user, BindingResult result, @PathVariable Long id) {
+        if(result.hasErrors()){
+            return validate(result);
+        }
         Optional<CourseEntity> courseTemp = courseService.getCourseById(id);
         if (courseTemp.isPresent()) {
             CourseEntity courseEntity = courseTemp.get();
@@ -53,4 +64,11 @@ public class CourseController {
         return ResponseEntity.notFound().build();
     }
 
+    private ResponseEntity<Map<String, String>> validate(BindingResult result) {
+        Map<String, String> errores = new HashMap<>();
+        result.getFieldErrors().forEach(err -> {
+            errores.put(err.getField(), "El campo " + err.getField() + " " + err.getDefaultMessage());
+        });
+        return ResponseEntity.badRequest().body(errores);
+    }
 }

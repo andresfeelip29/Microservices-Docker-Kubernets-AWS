@@ -1,6 +1,7 @@
 package com.co.app.course.msvcdockerkubernetes.courses.Repositories.Models.Entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "cursos")
@@ -10,6 +11,7 @@ public class CourseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty
     private String name;
 
     public Long getId() {

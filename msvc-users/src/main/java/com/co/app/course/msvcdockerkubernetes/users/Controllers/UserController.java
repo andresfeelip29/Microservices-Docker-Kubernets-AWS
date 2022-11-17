@@ -5,9 +5,13 @@ import com.co.app.course.msvcdockerkubernetes.users.Services.Contracts.IUserServ
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -29,12 +33,19 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<?> addUser(@RequestBody UserEntity user) {
+    public ResponseEntity<?> addUser(@Valid @RequestBody UserEntity user, BindingResult result) {
+        if(result.hasErrors()){
+            return validate(result);
+        }
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(user));
     }
 
     @PutMapping(name = "/{id}")
-    public ResponseEntity<?> updateUser(@RequestBody UserEntity user, @PathVariable Long id) {
+    public ResponseEntity<?> updateUser(@Valid @RequestBody UserEntity user, BindingResult result, @PathVariable Long id) {
+        if(result.hasErrors()){
+            return validate(result);
+        }
+
         Optional<UserEntity> userTemp = userService.getUserById(id);
         if (userTemp.isPresent()) {
             UserEntity userEntity = userTemp.get();
@@ -54,5 +65,13 @@ public class UserController {
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.notFound().build();
+    }
+
+    private ResponseEntity<Map<String, String>> validate(BindingResult result) {
+        Map<String, String> errores = new HashMap<>();
+        result.getFieldErrors().forEach(err -> {
+            errores.put(err.getField(), "El campo " + err.getField() + " " + err.getDefaultMessage());
+        });
+        return ResponseEntity.badRequest().body(errores);
     }
 }

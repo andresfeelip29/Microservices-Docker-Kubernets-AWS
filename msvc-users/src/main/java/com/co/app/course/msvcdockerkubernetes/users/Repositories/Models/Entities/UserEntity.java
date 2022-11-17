@@ -1,7 +1,9 @@
 package com.co.app.course.msvcdockerkubernetes.users.Repositories.Models.Entities;
 
 import javax.persistence.*;
-import javax.websocket.ClientEndpoint;
+import javax.validation.constraints.*;
+
+
 
 @Entity
 @Table(name = "usuarios")
@@ -10,9 +12,12 @@ public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank
     private String name;
+    @Email
     @Column(unique = true)
     private String email;
+    @NotBlank
     private String password;
 
     public Long getId() {
