@@ -9,10 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 @RequestMapping("/api/v1/User")
@@ -34,21 +31,42 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<?> addUser(@Valid @RequestBody UserEntity user, BindingResult result) {
-        if(result.hasErrors()){
+
+        if (result.hasErrors()) {
             return validate(result);
         }
+
+        if (!user.getEmail().isEmpty() && userService.getUserByEmail(user.getEmail()).isPresent()) {
+            return ResponseEntity.badRequest().
+                    body(Collections.
+                            singletonMap("error", "Ya existe un usuario con ese email"));
+        }
+
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(user));
     }
 
     @PutMapping(name = "/{id}")
     public ResponseEntity<?> updateUser(@Valid @RequestBody UserEntity user, BindingResult result, @PathVariable Long id) {
-        if(result.hasErrors()){
+
+
+        if (result.hasErrors()) {
             return validate(result);
         }
 
         Optional<UserEntity> userTemp = userService.getUserById(id);
+
+
+
         if (userTemp.isPresent()) {
             UserEntity userEntity = userTemp.get();
+
+            if (!user.getEmail().isEmpty() && userService.getUserByEmail(user.getEmail()).isPresent() && !user.getEmail().equalsIgnoreCase(userEntity.getEmail())) {
+                return ResponseEntity.badRequest().
+                        body(Collections.
+                                singletonMap("error", "Ya existe un usuario con ese email"));
+            }
+
+
             userEntity.setEmail(user.getEmail());
             userEntity.setName(user.getName());
             userEntity.setPassword(user.getPassword());
@@ -58,7 +76,7 @@ public class UserController {
     }
 
     @DeleteMapping(name = "/{id}")
-    public ResponseEntity<?> deleteUser(@PathVariable Long id){
+    public ResponseEntity<?> deleteUser(@PathVariable Long id) {
         Optional<UserEntity> userTemp = userService.getUserById(id);
         if (userTemp.isPresent()) {
             userService.delete(id);

@@ -14,6 +14,7 @@ import java.util.Optional;
 @Service
 public class UserServiceImpl implements IUserService {
 
+
     @Autowired
     private IUserRepository userRepository;
 
@@ -40,4 +41,10 @@ public class UserServiceImpl implements IUserService {
     public void delete(Long id) {
         this.userRepository.deleteById(id);
     }
+    @Override
+    @Transactional(readOnly = true)
+    public Optional<UserEntity> getUserByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
 }
