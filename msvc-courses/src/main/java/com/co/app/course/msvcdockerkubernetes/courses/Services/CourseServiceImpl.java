@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class CourseServiceImpl implements ICourseService {
@@ -47,6 +48,7 @@ public class CourseServiceImpl implements ICourseService {
     }
 
     @Override
+    @Transactional
     public Optional<User> setUser(User user, Long courseId) {
 
         Optional<CourseEntity> o = courseRepository.findById(courseId);
@@ -65,12 +67,57 @@ public class CourseServiceImpl implements ICourseService {
     }
 
     @Override
+    @Transactional
     public Optional<User> createUser(User user, Long courseId) {
+
+        Optional<CourseEntity> o = courseRepository.findById(courseId);
+        if (o.isPresent()) {
+            User userMsvc = client.addUser(user);
+            CourseEntity course = o.get();
+            CourseUserEntity courseUserEntity = new CourseUserEntity();
+
+            courseUserEntity.setUserId(userMsvc.getId());
+            course.addCourseUser(courseUserEntity);
+            courseRepository.save(course);
+            return Optional.of(userMsvc);
+        }
+
         return Optional.empty();
     }
 
     @Override
+    @Transactional
     public Optional<User> unassignUser(User user, Long courseId) {
+        Optional<CourseEntity> o = courseRepository.findById(courseId);
+        if (o.isPresent()) {
+            User userMsvc = client.getUser(user.getId());
+            CourseEntity course = o.get();
+            CourseUserEntity courseUserEntity = new CourseUserEntity();
+
+            courseUserEntity.setUserId(userMsvc.getId());
+            course.removeCourseUser(courseUserEntity);
+            courseRepository.save(course);
+            return Optional.of(userMsvc);
+        }
+
+        return Optional.empty();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Optional<CourseEntity> getCourseWithDetailUsers(Long id) {
+        Optional<CourseEntity> o = courseRepository.findById(id);
+        if (o.isPresent()) {
+            CourseEntity course = o.get();
+            if (!course.getCourseUserEntities().isEmpty()) {
+                List<Long> ids = course.getCourseUserEntities()
+                        .stream()
+                        .map(CourseUserEntity::getUserId)
+                        .collect(Collectors.toList());
+                course.setUsers(client.listUserByCourse(ids));
+            }
+            return Optional.of(course);
+        }
         return Optional.empty();
     }
 }

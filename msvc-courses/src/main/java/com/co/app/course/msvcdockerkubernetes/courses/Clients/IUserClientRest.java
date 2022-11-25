@@ -2,12 +2,11 @@ package com.co.app.course.msvcdockerkubernetes.courses.Clients;
 
 import com.co.app.course.msvcdockerkubernetes.courses.Repositories.Models.User;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
-@FeignClient(name = "msvc-users", url = "localhost:8001")
+import java.util.List;
+
+@FeignClient(name = "msvc-users", url = "localhost:8001/api/v1/User")
 public interface IUserClientRest {
 
     @GetMapping("/{id}")
@@ -15,4 +14,7 @@ public interface IUserClientRest {
 
     @PostMapping
     User addUser(@RequestBody User user);
+
+    @GetMapping("/UserByIds")
+    List<User> listUserByCourse(@RequestParam Iterable<Long> ids);
 }

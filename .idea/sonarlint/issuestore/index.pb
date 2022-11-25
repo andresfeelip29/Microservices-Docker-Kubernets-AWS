@@ -9,13 +9,11 @@ D
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 B
 msvc-users/pom.xml,2\c\2c59da4100b83db7056a7faba346782807ba3f71
-š
-jmsvc-users/src/main/java/com/co/app/course/msvcdockerkubernetes/users/Services/Contracts/IUserService.java,e\9\e95aad15cceb0944d07125e291237698589e1dff
-“
-cmsvc-users/src/main/java/com/co/app/course/msvcdockerkubernetes/users/Services/UserServiceImpl.java,f\f\ff7ceabd830b18554c644dfbb2cd098e3b563710
 S
 #.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
-¡
-qmsvc-users/src/main/java/com/co/app/course/msvcdockerkubernetes/users/Repositories/Contracts/IUserRepository.java,1\b\1b29b27b32fe96b2f770c9f4bc52be0f49148069
 ¢
 rmsvc-users/src/main/java/com/co/app/course/msvcdockerkubernetes/users/Repositories/Models/Entities/UserEntity.java,7\7\775faff5cac1cd0455eeb1c2e35d34c4ff906661
+—
+gmsvc-courses/src/main/java/com/co/app/course/msvcdockerkubernetes/courses/Repositories/Models/User.java,6\8\68c04f501ddf16961a7e8d534176ad5e337126f1
+D
+msvc-courses/pom.xml,4\9\4973bda155ac8601cb47bd306ab0b254f478d50d

@@ -16,6 +16,7 @@ public interface IUserService {
 
     void delete(Long id);
     Optional<UserEntity> getUserByEmail(String email);
+    List<UserEntity>  listUserByIds(Iterable<Long> ids);
 }
 
 

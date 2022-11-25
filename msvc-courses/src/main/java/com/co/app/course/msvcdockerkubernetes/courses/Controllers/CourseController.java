@@ -1,7 +1,9 @@
 package com.co.app.course.msvcdockerkubernetes.courses.Controllers;
 
 import com.co.app.course.msvcdockerkubernetes.courses.Repositories.Models.Entities.CourseEntity;
+import com.co.app.course.msvcdockerkubernetes.courses.Repositories.Models.User;
 import com.co.app.course.msvcdockerkubernetes.courses.Services.Contracts.ICourseService;
+import feign.FeignException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,10 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 @RequestMapping("/api/v1/Course")
@@ -27,35 +26,88 @@ public class CourseController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getCourse(@PathVariable Long id) {
-        Optional<CourseEntity> course = courseService.getCourseById(id);
+        //Optional<CourseEntity> course = courseService.getCourseById(id);
+        Optional<CourseEntity> course = courseService.getCourseWithDetailUsers(id);
         return course.isPresent() ? ResponseEntity.ok(course.get()) : ResponseEntity.notFound().build();
     }
 
-    @PostMapping
+    @PostMapping("/")
     public ResponseEntity<?> addCourse(@Valid @RequestBody CourseEntity course, BindingResult result) {
-        if(result.hasErrors()){
+        if (result.hasErrors()) {
             return validate(result);
         }
 
         return ResponseEntity.status(HttpStatus.CREATED).body(courseService.save(course));
     }
 
-    @PutMapping(name = "/{id}")
-    public ResponseEntity<?> updateCourse(@Valid @RequestBody CourseEntity user, BindingResult result, @PathVariable Long id) {
-        if(result.hasErrors()){
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateCourse(@Valid @RequestBody CourseEntity course, BindingResult result, @PathVariable Long id) {
+        if (result.hasErrors()) {
             return validate(result);
         }
         Optional<CourseEntity> courseTemp = courseService.getCourseById(id);
         if (courseTemp.isPresent()) {
             CourseEntity courseEntity = courseTemp.get();
-            courseEntity.setName(user.getName());
+            courseEntity.setName(course.getName());
             return ResponseEntity.status(HttpStatus.CREATED).body(courseService.save(courseEntity));
         }
         return ResponseEntity.notFound().build();
     }
 
-    @DeleteMapping(name = "/{id}")
-    public ResponseEntity<?> deleteUser(@PathVariable Long id){
+    @PutMapping("/assignUser/{courseId}")
+    public ResponseEntity<?> setUser(@RequestBody User user, @PathVariable Long courseId) {
+        Optional<User> o;
+        try {
+            o = courseService.setUser(user, courseId);
+        } catch (FeignException e) {
+            return ResponseEntity.
+                    status(HttpStatus.NOT_FOUND).
+                    body(Collections.singletonMap("mensaje", "No existe usuario por id o error por la comunicacion: " + e.getMessage()));
+        }
+
+        if (o.isPresent()) {
+
+            return ResponseEntity.status(HttpStatus.CREATED).body(o.get());
+        }
+
+        return ResponseEntity.notFound().build();
+    }
+
+    @PostMapping("/createUser/{courseId}")
+    public ResponseEntity<?> createUser(@RequestBody User user, @PathVariable Long courseId) {
+        Optional<User> o;
+        try {
+            o = courseService.createUser(user, courseId);
+        } catch (FeignException e) {
+            return ResponseEntity.
+                    status(HttpStatus.NOT_FOUND).
+                    body(Collections.singletonMap("mensaje", "No se pudo crear el usuario o error en la comunicacion : " + e.getMessage()));
+        }
+        if (o.isPresent()) {
+            return ResponseEntity.status(HttpStatus.CREATED).body(o.get());
+        }
+
+        return ResponseEntity.notFound().build();
+    }
+
+    @DeleteMapping("/unassignUser/{courseId}")
+    public ResponseEntity<?> unassignUser(@RequestBody User user, @PathVariable Long courseId) {
+        Optional<User> o;
+        try {
+            o = courseService.unassignUser(user, courseId);
+        } catch (FeignException e) {
+            return ResponseEntity.
+                    status(HttpStatus.NOT_FOUND).
+                    body(Collections.singletonMap("mensaje", "No se pudo crear el usuario o error en la comunicacion : " + e.getMessage()));
+        }
+        if (o.isPresent()) {
+            return ResponseEntity.status(HttpStatus.OK).body(o.get());
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteCourse(@PathVariable Long id) {
         Optional<CourseEntity> courseTemp = courseService.getCourseById(id);
         if (courseTemp.isPresent()) {
             courseService.delete(id);

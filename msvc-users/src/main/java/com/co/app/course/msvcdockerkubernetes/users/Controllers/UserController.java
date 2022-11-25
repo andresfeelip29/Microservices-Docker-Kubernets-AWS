@@ -56,7 +56,6 @@ public class UserController {
         Optional<UserEntity> userTemp = userService.getUserById(id);
 
 
-
         if (userTemp.isPresent()) {
             UserEntity userEntity = userTemp.get();
 
@@ -85,6 +84,11 @@ public class UserController {
         return ResponseEntity.notFound().build();
     }
 
+    @GetMapping("/UserByIds")
+    public ResponseEntity<?> getUsersByCourse(@RequestParam List<Long> ids) {
+        return ResponseEntity.ok(userService.listUserByIds(ids));
+    }
+
     private ResponseEntity<Map<String, String>> validate(BindingResult result) {
         Map<String, String> errores = new HashMap<>();
         result.getFieldErrors().forEach(err -> {
@@ -92,4 +96,5 @@ public class UserController {
         });
         return ResponseEntity.badRequest().body(errores);
     }
+
 }

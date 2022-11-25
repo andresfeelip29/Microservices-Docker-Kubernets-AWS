@@ -10,6 +10,7 @@ public interface ICourseService {
 
     List<CourseEntity> findAll();
     Optional<CourseEntity> getCourseById(Long id);
+    Optional<CourseEntity> getCourseWithDetailUsers(Long id);
     CourseEntity save(CourseEntity course);
     void delete(Long id);
     Optional<User> setUser(User user, Long courseId);

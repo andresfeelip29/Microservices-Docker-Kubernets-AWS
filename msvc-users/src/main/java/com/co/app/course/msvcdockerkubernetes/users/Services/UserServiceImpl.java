@@ -41,10 +41,16 @@ public class UserServiceImpl implements IUserService {
     public void delete(Long id) {
         this.userRepository.deleteById(id);
     }
+
     @Override
     @Transactional(readOnly = true)
     public Optional<UserEntity> getUserByEmail(String email) {
         return userRepository.findByEmail(email);
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public List<UserEntity> listUserByIds(Iterable<Long> ids) {
+        return (List<UserEntity>) userRepository.findAllById(ids);
+    }
 }
