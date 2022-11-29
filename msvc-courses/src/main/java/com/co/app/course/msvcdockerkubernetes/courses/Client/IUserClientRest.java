@@ -1,4 +1,4 @@
-package com.co.app.course.msvcdockerkubernetes.courses.Clients;
+package com.co.app.course.msvcdockerkubernetes.courses.Client;
 
 import com.co.app.course.msvcdockerkubernetes.courses.Repositories.Models.User;
 import org.springframework.cloud.openfeign.FeignClient;

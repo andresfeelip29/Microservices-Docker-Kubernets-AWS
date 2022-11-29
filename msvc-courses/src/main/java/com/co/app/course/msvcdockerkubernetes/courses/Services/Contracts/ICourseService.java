@@ -13,6 +13,7 @@ public interface ICourseService {
     Optional<CourseEntity> getCourseWithDetailUsers(Long id);
     CourseEntity save(CourseEntity course);
     void delete(Long id);
+    void deleteCourseUserById(Long userId);
     Optional<User> setUser(User user, Long courseId);
     Optional<User> createUser(User user, Long courseId);
     Optional<User> unassignUser (User user, Long courseId);

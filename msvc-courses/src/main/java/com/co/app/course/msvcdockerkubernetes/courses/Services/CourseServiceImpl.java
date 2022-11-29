@@ -1,6 +1,6 @@
 package com.co.app.course.msvcdockerkubernetes.courses.Services;
 
-import com.co.app.course.msvcdockerkubernetes.courses.Clients.IUserClientRest;
+import com.co.app.course.msvcdockerkubernetes.courses.Client.IUserClientRest;
 import com.co.app.course.msvcdockerkubernetes.courses.Repositories.Contracts.ICourseRepository;
 import com.co.app.course.msvcdockerkubernetes.courses.Repositories.Models.Entities.CourseEntity;
 import com.co.app.course.msvcdockerkubernetes.courses.Repositories.Models.Entities.CourseUserEntity;
@@ -45,6 +45,12 @@ public class CourseServiceImpl implements ICourseService {
     @Transactional(readOnly = true)
     public void delete(Long id) {
         courseRepository.deleteById(id);
+    }
+
+    @Override
+    @Transactional
+    public void deleteCourseUserById(Long userId) {
+        courseRepository.deleteCourseUserById(userId);
     }
 
     @Override

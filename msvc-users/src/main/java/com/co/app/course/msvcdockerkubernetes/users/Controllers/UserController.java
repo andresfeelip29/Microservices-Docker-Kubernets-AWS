@@ -45,7 +45,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(user));
     }
 
-    @PutMapping(name = "/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<?> updateUser(@Valid @RequestBody UserEntity user, BindingResult result, @PathVariable Long id) {
 
 
@@ -74,7 +74,7 @@ public class UserController {
         return ResponseEntity.notFound().build();
     }
 
-    @DeleteMapping(name = "/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteUser(@PathVariable Long id) {
         Optional<UserEntity> userTemp = userService.getUserById(id);
         if (userTemp.isPresent()) {

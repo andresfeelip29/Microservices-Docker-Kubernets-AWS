@@ -1,5 +1,6 @@
 package com.co.app.course.msvcdockerkubernetes.users.Services;
 
+import com.co.app.course.msvcdockerkubernetes.users.Client.ICourseClientRest;
 import com.co.app.course.msvcdockerkubernetes.users.Repositories.Contracts.IUserRepository;
 import com.co.app.course.msvcdockerkubernetes.users.Repositories.Models.Entities.UserEntity;
 import com.co.app.course.msvcdockerkubernetes.users.Services.Contracts.IUserService;
@@ -17,6 +18,9 @@ public class UserServiceImpl implements IUserService {
 
     @Autowired
     private IUserRepository userRepository;
+
+    @Autowired
+    private ICourseClientRest courseClientRest;
 
     @Transactional(readOnly = true)
     @Override
@@ -40,6 +44,8 @@ public class UserServiceImpl implements IUserService {
     @Override
     public void delete(Long id) {
         this.userRepository.deleteById(id);
+        this.courseClientRest.deleteCourseUser(id);
+
     }
 
     @Override
