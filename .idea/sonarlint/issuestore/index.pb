@@ -15,3 +15,7 @@ gmsvc-courses/src/main/java/com/co/app/course/msvcdockerkubernetes/courses/Repos
 jmsvc-users/src/main/java/com/co/app/course/msvcdockerkubernetes/users/Services/Contracts/IUserService.java,e\9\e95aad15cceb0944d07125e291237698589e1dff
 ¡
 qmsvc-users/src/main/java/com/co/app/course/msvcdockerkubernetes/users/Repositories/Contracts/IUserRepository.java,1\b\1b29b27b32fe96b2f770c9f4bc52be0f49148069
+•
+emsvc-users/src/main/java/com/co/app/course/msvcdockerkubernetes/users/Controllers/UserController.java,d\7\d7975887c2886ecffdeddf54b357e2cdcbdc8c17
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
