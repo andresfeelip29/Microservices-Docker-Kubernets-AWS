@@ -19,8 +19,8 @@ public class UserController {
     IUserService userService;
 
     @GetMapping("/")
-    public List<UserEntity> getUsers() {
-        return userService.findAll();
+    public Map<String, List<UserEntity>> getUsers() {
+        return Collections.singletonMap("data",userService.findAll());
     }
 
     @GetMapping("/{id}")

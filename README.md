@@ -3,7 +3,7 @@ Example app with Java using Spring Boot - JPA - Security with JWT - Spring cloud
 
 ### Hello!
 
-This repository is created in order to work on the implementation of microservices using spring cloud, kubernetes and docker, in the course you will build a microservices application to communicate between them using spring cloud, the applications will be built under entandar Rest template and using spring security with JWT, spring data for persistence, load balanced.
+This repository is created in order to work on the implementation of microservices using spring cloud, kubernetes and docker, in the course you will build a microservices with patter database per service application to communicate between them using spring cloud, the applications will be built under entandar Rest template and using spring security with JWT, spring data for persistence, load balanced.
 
 - first msvc is implemented using spring web with spring data jpa with bd MySQL
 
