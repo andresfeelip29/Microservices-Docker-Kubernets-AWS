@@ -32,3 +32,25 @@ rmsvc-users/src/main/java/com/co/app/course/msvcdockerkubernetes/users/Repositor
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 ¡
 qmsvc-users/src/main/java/com/co/app/course/msvcdockerkubernetes/users/Repositories/Contracts/IUserRepository.java,1\b\1b29b27b32fe96b2f770c9f4bc52be0f49148069
+•
+emsvc-users/src/main/java/com/co/app/course/msvcdockerkubernetes/users/Controllers/UserController.java,d\7\d7975887c2886ecffdeddf54b357e2cdcbdc8c17
+¨
+xmsvc-courses/src/main/java/com/co/app/course/msvcdockerkubernetes/courses/Repositories/Models/Entities/CourseEntity.java,3\f\3f239093e04ae43996e5bd2e1553ed0538c99cc1
+™
+imsvc-courses/src/main/java/com/co/app/course/msvcdockerkubernetes/courses/Services/CourseServiceImpl.java,b\5\b5f15940addcd660d8fa31122e5de5b6761c9c22
+ 
+pmsvc-courses/src/main/java/com/co/app/course/msvcdockerkubernetes/courses/Services/Contracts/ICourseService.java,4\c\4c170575cf8cc03647df2d57eca2716153e2786f
+E
+msvc-users/Dockerfile,8\9\890173d3a8cd245dd1637bef9a02e8ffe888087d
+G
+msvc-courses/Dockerfile,9\2\9226f0c8248d74760c8206948b9d4b0395be9aee
+›
+kmsvc-courses/src/main/java/com/co/app/course/msvcdockerkubernetes/courses/Controllers/CourseController.java,f\e\fe54687df6d65d0cbfe07c7a8d91b33596f0af01
+“
+cmsvc-users/src/main/java/com/co/app/course/msvcdockerkubernetes/users/Client/ICourseClientRest.java,4\c\4cb906f418c0ae1f7a456ed92afd46c475e3e755
+?
+msvc-users/.env,3\9\3969d12e0c357d5a7c2d062649759de8b42dfa3a
+A
+msvc-courses/.env,2\d\2d6664bb976ea556c8d603b92374e17a90e674f9
+•
+emsvc-courses/src/main/java/com/co/app/course/msvcdockerkubernetes/courses/Client/IUserClientRest.java,7\4\74da43af6c5485e2eccc228275666d55aa702dc3
