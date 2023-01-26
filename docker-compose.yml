@@ -30,12 +30,14 @@ services:
       - spring
   msvc-users:
     container_name: msvc-users
-    #if we want to build an image
-    build:
-      context: ./
-      dockerfile: ./msvc-users/Dockerfile
-    #with the tag image is for using an existing image or for set the tag of an image after build
-    image: msvc-users
+    #id we want to build image from remote repository in Dockerhub, using de user name and reposiotrie name
+    image: andresfeelip29/msvc-users
+    #if we want to build an image to local from Dockerfile uses build:
+    #build:
+      #context: ./
+      #dockerfile: ./msvc-users/Dockerfile
+    #with the tag image is for using an existing image used image: or for set the tag of an image after build
+    #image: msvc-users
     ports:
       - "8001:8001"
     env_file: ./msvc-users/.env
@@ -46,12 +48,14 @@ services:
     restart: always
   msvc-courses:
     container_name: msvc-courses
-    #if we want to build an image
-    build:
-      context: ./
-      dockerfile: ./msvc-courses/Dockerfile
+    #id we want to build image from remote repository in Dockerhub, using de user name and reposiotrie name
+    image: andresfeelip29/msvc-courses
+    #if we want to build an image to local from Dockerfile uses build:
+    #build:
+      #context: ./
+      #dockerfile: ./msvc-courses/Dockerfile
     #with the tag image is for using an existing image or for set the tag of an image after build
-    image: msvc-courses
+    #image: msvc-courses
     ports:
       - "8002:8002"
     env_file: ./msvc-courses/.env
