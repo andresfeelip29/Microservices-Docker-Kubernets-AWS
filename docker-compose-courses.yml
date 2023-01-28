@@ -1,0 +1,48 @@
+#version dcoker componse
+version: "3.9"
+#services are the constainers
+services:
+  postgres14:
+    container_name: postgres14
+    image: postgres:14-alpine
+    ports:
+      - "5532:5432"
+    environment:
+      POSTGRES_PASSWORD: sasa
+      POSTGRES_DB: msvc_courses
+    volumes:
+      - data-postgres:/var/lib/postgresql/data
+    restart: always
+    networks:
+      - spring
+  msvc-courses:
+    container_name: msvc-courses
+    image: andresfeelip29/msvc-courses
+    ports:
+      - "8002:8002"
+    environment:
+      PORT: 8002
+      DB_HOST: postgres14:5432
+      DATA_BASE: msvc_courses
+      DB_USERNAME: postgres
+      DB_PASSWORD: sasa
+      USERS_URL: ec2-100-26-249-99.compute-1.amazonaws.com:8001/api/v1
+    networks:
+      - spring
+    depends_on:
+      - postgres14
+    restart: always
+
+#define the volumes for persistence data
+volumes:
+  data-postgres:
+    name: data-postgres
+
+#define the network for de comunications the all services
+networks:
+  spring:
+    name: spring
+
+
+
+

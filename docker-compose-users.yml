@@ -1,0 +1,47 @@
+#version dcoker componse
+version: "3.9"
+#services are the constainers
+services:
+  mysql8:
+    container_name: mysql8
+    image: mysql:8
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: sasa
+      MYSQL_DATABASE: msvc_users
+    volumes:
+      - data-mysql:/var/lib/mysql
+    restart: always
+    networks:
+      - spring
+  msvc-users:
+    container_name: msvc-users
+    image: andresfeelip29/msvc-users
+    ports:
+      - "8001:8001"
+    environment:
+      PORT: 8001
+      DB_HOST: mysql8:3306
+      DATA_BASE: msvc_users
+      DB_USERNAME: root
+      DB_PASSWORD: sasa
+      COURSES_URL: ec2-54-235-194-42.compute-1.amazonaws.com:8002/api/v1
+    networks:
+      - spring
+    depends_on:
+      - mysql8
+    restart: always
+
+#define the volumes for persistence data
+volumes:
+  data-mysql:
+    name: data-mysql
+#define the network for de comunications the all services
+networks:
+  spring:
+    name: spring
+
+
+
+

@@ -44,9 +44,9 @@ cmsvc-users/src/main/java/com/co/app/course/msvcdockerkubernetes/users/Client/IC
 emsvc-courses/src/main/java/com/co/app/course/msvcdockerkubernetes/courses/Client/IUserClientRest.java,7\4\74da43af6c5485e2eccc228275666d55aa702dc3
 E
 msvc-users/Dockerfile,8\9\890173d3a8cd245dd1637bef9a02e8ffe888087d
-?
-msvc-users/.env,3\9\3969d12e0c357d5a7c2d062649759de8b42dfa3a
 G
 msvc-courses/Dockerfile,9\2\9226f0c8248d74760c8206948b9d4b0395be9aee
-A
-msvc-courses/.env,2\d\2d6664bb976ea556c8d603b92374e17a90e674f9
+•
+emsvc-users/src/main/java/com/co/app/course/msvcdockerkubernetes/users/Controllers/UserController.java,d\7\d7975887c2886ecffdeddf54b357e2cdcbdc8c17
+›
+kmsvc-courses/src/main/java/com/co/app/course/msvcdockerkubernetes/courses/Controllers/CourseController.java,f\e\fe54687df6d65d0cbfe07c7a8d91b33596f0af01

@@ -40,7 +40,14 @@ services:
     #image: msvc-users
     ports:
       - "8001:8001"
-    env_file: ./msvc-users/.env
+    #env_file: ./msvc-users/.env
+    environment:
+      PORT: 8001
+      DB_HOST: mysql8:3306
+      DATA_BASE: msvc_users
+      DB_USERNAME: root
+      DB_PASSWORD: sasa
+      COURSES_URL: msvc-courses:8002/api/v1
     networks:
       - spring
     depends_on:
@@ -58,7 +65,14 @@ services:
     #image: msvc-courses
     ports:
       - "8002:8002"
-    env_file: ./msvc-courses/.env
+    #env_file: ./msvc-courses/.env
+    environment:
+      PORT: 8002
+      DB_HOST: postgres14:5432
+      DATA_BASE: msvc_courses
+      DB_USERNAME: postgres
+      DB_PASSWORD: sasa
+      USERS_URL: msvc-users:8001/api/v1
     networks:
       - spring
     depends_on:
