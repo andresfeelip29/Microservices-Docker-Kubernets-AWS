@@ -59,4 +59,5 @@ EXPOSE $PORT
 #Used de commad for start application: ENTRYPOINT is more stricter and does not allow to overwrite the execution commands.
 #CMD if it allows to overwrite the startup commands
 #ENTRYPOINT ["java", "-jar","msvc-users-0.0.1-SNAPSHOT.jar"]
-CMD ["java", "-jar","msvc-users-0.0.1-SNAPSHOT.jar"]
+#CMD ["java", "-jar","msvc-users-0.0.1-SNAPSHOT.jar"]
+CMD sleep 20 && java -jar msvc-users-0.0.1-SNAPSHOT.jar

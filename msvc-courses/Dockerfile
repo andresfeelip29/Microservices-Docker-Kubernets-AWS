@@ -46,9 +46,10 @@ RUN mkdir ./logs
 COPY --from=builder /app/$MSVC_NAME/target/msvc-courses-0.0.1-SNAPSHOT.jar .
 
 #Set the port to connect externar
-EXPOSE 8001
+EXPOSE 8002
 
 #Used de commad for start application: ENTRYPOINT is more stricter and does not allow to overwrite the execution commands.
 #CMD if it allows to overwrite the startup commands
 #ENTRYPOINT ["java", "-jar","msvc-courses-0.0.1-SNAPSHOT.jar"]
-CMD ["java", "-jar","msvc-courses-0.0.1-SNAPSHOT.jar"]
+#CMD ["java", "-jar","msvc-courses-0.0.1-SNAPSHOT.jar"]
+CMD sleep 20 && java -jar msvc-courses-0.0.1-SNAPSHOT.jar

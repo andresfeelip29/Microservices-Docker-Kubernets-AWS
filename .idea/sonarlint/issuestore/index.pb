@@ -5,8 +5,6 @@ S
 #.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
 š
 jmsvc-users/src/main/java/com/co/app/course/msvcdockerkubernetes/users/Services/Contracts/IUserService.java,e\9\e95aad15cceb0944d07125e291237698589e1dff
-D
-msvc-courses/pom.xml,4\9\4973bda155ac8601cb47bd306ab0b254f478d50d
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 §
@@ -42,11 +40,9 @@ pmsvc-courses/src/main/java/com/co/app/course/msvcdockerkubernetes/courses/Servi
 cmsvc-users/src/main/java/com/co/app/course/msvcdockerkubernetes/users/Client/ICourseClientRest.java,4\c\4cb906f418c0ae1f7a456ed92afd46c475e3e755
 •
 emsvc-courses/src/main/java/com/co/app/course/msvcdockerkubernetes/courses/Client/IUserClientRest.java,7\4\74da43af6c5485e2eccc228275666d55aa702dc3
-E
-msvc-users/Dockerfile,8\9\890173d3a8cd245dd1637bef9a02e8ffe888087d
-G
-msvc-courses/Dockerfile,9\2\9226f0c8248d74760c8206948b9d4b0395be9aee
 •
 emsvc-users/src/main/java/com/co/app/course/msvcdockerkubernetes/users/Controllers/UserController.java,d\7\d7975887c2886ecffdeddf54b357e2cdcbdc8c17
 ›
 kmsvc-courses/src/main/java/com/co/app/course/msvcdockerkubernetes/courses/Controllers/CourseController.java,f\e\fe54687df6d65d0cbfe07c7a8d91b33596f0af01
+?
+msvc-users/.env,3\9\3969d12e0c357d5a7c2d062649759de8b42dfa3a
