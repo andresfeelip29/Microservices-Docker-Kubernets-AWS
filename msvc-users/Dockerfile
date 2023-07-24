@@ -3,7 +3,7 @@
 #Global ARG in multi-stage: we needs declared again the arg variable before de FROM in the all stage for constructeded the images
 ARG MSVC_NAME=msvc-users
 
-#Select de image base to used adn rename image
+#Select de image base to used and rename image
 FROM amazoncorretto:18-alpine as builder
 
 #The arguments are used as variables but only in the construction of the image
