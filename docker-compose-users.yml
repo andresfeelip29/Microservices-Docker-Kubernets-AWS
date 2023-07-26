@@ -26,7 +26,7 @@ services:
       DATA_BASE: msvc_users
       DB_USERNAME: root
       DB_PASSWORD: sasa
-      COURSES_URL: ec2-54-235-194-42.compute-1.amazonaws.com:8002/api/v1
+      COURSES_URL: ec2-3-87-221-65.compute-1.amazonaws.com:8002/api/v1
     networks:
       - spring
     depends_on:

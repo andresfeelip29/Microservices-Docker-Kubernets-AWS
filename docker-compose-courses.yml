@@ -26,7 +26,7 @@ services:
       DATA_BASE: msvc_courses
       DB_USERNAME: postgres
       DB_PASSWORD: sasa
-      USERS_URL: ec2-100-26-249-99.compute-1.amazonaws.com:8001/api/v1
+      USERS_URL: ec2-52-90-85-170.compute-1.amazonaws.com:8001/api/v1
     networks:
       - spring
     depends_on:
